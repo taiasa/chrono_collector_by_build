@@ -281,9 +281,11 @@ const App = () => {
 
       gems.forEach(gem => {
         if (!gem.active) return;
-        ctx.shadowBlur = gem.isSpecial ? 15 : 0;
-        ctx.shadowColor = gem.isSpecial ? SPECIAL_COLORS[gem.specialType] : 'transparent';
-        ctx.font = gem.isSpecial ? '24px serif' : '18px serif';
+        // 視認性向上のための変更: サイズアップと常時グロー効果
+        ctx.shadowBlur = gem.isSpecial ? 25 : 15;
+        ctx.shadowColor = gem.isSpecial ? SPECIAL_COLORS[gem.specialType] : '#ffffff'; // 通常ジェムは白く光らせる
+        
+        ctx.font = gem.isSpecial ? '40px serif' : '28px serif';
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         let icon = '💎';
         if (gem.isSpecial) {
